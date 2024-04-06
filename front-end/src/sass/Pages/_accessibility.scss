@@ -1,0 +1,33 @@
+.section-text--accessibility {
+    & h2 {
+        margin: 1rem 0;
+    }
+
+    & h3 {
+        margin: 0.8rem 0;
+    }
+
+    & h4 {
+        margin: 0.6rem 0;
+    }
+
+    & .note {
+        font-weight: bold;
+    }
+
+    & ul, dl {
+        font-size: map-get($font-size,default);
+        margin-left: 2rem;
+    }
+    & h2, h3, h4, li, dt, dd, p {
+        background-color: map-get($palette,menuColor);
+    }
+
+    & dt {
+        font-weight: bold;
+    }
+    & dd {
+        margin-left: 0.8rem;
+        margin-bottom: 0.6rem;
+    }
+}

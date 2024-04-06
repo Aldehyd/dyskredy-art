@@ -1,0 +1,52 @@
+import TimeSliderInterface from "./timeSliderInterface.js";
+import VolumeSliderInterface from "./volumeSliderInterface.js";
+import AccessibilityInterface from "./accessibilityInterface.js";
+import initialize from "../initialize";
+
+export default interface VideoPlayerInterface {
+    accessibility: AccessibilityInterface;
+    node: HTMLElement;
+    language: string | null;
+    background: HTMLElement | null;
+    fullScreenAlert: HTMLElement | null;
+    mainPlayButton: HTMLElement | null;
+    video: HTMLVideoElement | null;
+    controlBar: HTMLElement | null;
+    playButton: HTMLElement | null | undefined;
+    timeSliderContainer: HTMLElement | null | undefined;
+    timeSliderThumb: HTMLElement | null | undefined;
+    timeSlider: TimeSliderInterface | null | undefined;
+    currentTimeElement: HTMLElement | null;
+    maxTimeElement: HTMLElement | null;
+    volumeContainer: HTMLElement | null | undefined;
+    volumeButton: HTMLElement | null | undefined;
+    volumeSliderContainer: HTMLElement | null | undefined;
+    volumeSliderThumb: HTMLElement | null | undefined;
+    volumeSlider: VolumeSliderInterface |null | undefined;
+    videoFocusElement: HTMLElement | null;
+    fullScreenButton: HTMLElement | null;
+    fullScreenIcon: HTMLElement | null | undefined;
+    fullScreenExitIcon: HTMLElement | null | undefined;
+    isFullScreenActive: boolean;
+    controlBarHide: any;
+
+    initialize(): void;
+    playVideo(): void;
+    stopVideo(): void;
+    handleClickOnFullScreenButton(): void;
+    setFullScreen(): void;
+    leaveFullScreen(): void;
+    handleFullScreenChange(): void;
+    handleClickOnMainPlayButton(): void;
+    handleClickOnPlayButton(): void;
+    handleClickOnVolumeButton(): void;
+    setTimeIndicator(time:number | undefined,timeIndicator:HTMLElement | null): void;
+    handleCurrentTimeElement(): void;
+    handleTimeSlider(): void;
+    handleControlBar(): void;
+    hideControlBarOnMouseLeave(): void;
+    handleMouseOverControlBar(): void;
+    handleKeyboard(e: KeyboardEvent): void;
+    displayFocusOnVideo(): void;
+    removeFocusOnVideo(): void;
+}

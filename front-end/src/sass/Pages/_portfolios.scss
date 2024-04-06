@@ -1,0 +1,49 @@
+.portfolio-grid {
+    width: $portfolio-gridWidth;
+    height: $portfolio-gridHeight;
+    margin: map-get($margins,portfolioGrid);
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(15,1fr);
+    grid-gap: $grid-gap;
+    @include tablette {
+        width: $portfolio-gridWitdhTablette;
+        height: $portfolio-gridHeightTablette;
+    };
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+        width: $portfolio-gridWidthMobile;
+        height: $portfolio-gridHeightMobile;
+    };
+}
+.technopolice {
+    grid-area: 1/1/5/5;
+    @include mobile {
+        height: 300px;
+    };
+}
+.reves {
+    grid-area: 3/5/7/9;
+    @include mobile {
+        height: 300px;
+    };
+}
+.peintures {
+    grid-area: 7/2/11/6;
+    @include mobile {
+        height: 300px;
+    };
+}
+.photos {
+    grid-area: 11/1/15/5;
+    @include mobile {
+        height: 300px;
+    };
+}
+.videos {
+    grid-area: 12/5/16/9;
+    @include mobile {
+        height: 300px;
+    };
+}

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolios of my videos.">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Portfolio Videos</title>
+    <!-- Styles -->
+    <!-- <link href="./styleDefault.css" rel="stylesheet" title="default">
+    <link href="./styleContrast.css" rel="alternate stylesheet" title="contrast"> -->
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+    <!-- menu liens d'évitement -->
+    <nav aria-label="quick links" class="acces-rapide"> 
+        <ul>
+            <li class="acces-rapide_liens"><a href="#header">Header</a></li>
+            <li class="acces-rapide_liens"><a href="#main-menu">Main menu</a></li>
+            <li class="acces-rapide_liens"><a href="#main">Main content</a></li>
+            <li class="acces-rapide_liens"><a href="#footer">Page bottom</a></li>
+        </ul>
+    </nav>
+
+    <div class="modal-layer"> 
+        <div class="top-modal focus-trapping" tabindex="0"></div><!--permet de créer les pièges au focus sur les modales-->
+        <!-- menu mobile -->
+        <div role="dialog" aria-modal="true" class="modal-mobile" aria-label="main menu">
+            <button aria-label="Close the main menu dialog" class="modal-mobile_close modal-close">X</button>
+            <nav>
+                <ul class="modal-mobile_menu" id="mobile_menu">
+                    <li class="nav_link mobileportfolios">
+                        <a href="/en" class="mobile-portfolios-link">Portfolios</a>
+                    </li>
+                    <li class="nav_link"><a href="about">About</a></li>
+                    <li class="nav_link"><a href="contact_en">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- modale de réglages des paramètres d'accessiblité -->
+        <div role="dialog" aria-modal="true" class="modal-access" aria-labelledby="modal-access-title">
+            <button class="modal-access_close modal-close" aria-label="Close the accessibility dialog">
+                X</button>
+            <h1 id="modal-access-title" class="modal-access_heading">Accessibility</h1>
+            <ul class="modal-access_liste" aria-label="Réglages d'accessibilité">
+                <li class="switch">
+                    <label class="switch_label" id="contrast-label">Contrast mode :</label>
+                    <button class="switch_box switch-contrast" aria-labelledby="contrast-label" 
+                        aria-checked="true" role="switch" type="button">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li class="switch">
+                    <label class="switch_label" id="animations-label">Animations :</label>
+                    <button class="switch_box switch-animations" aria-labelledby="animations-label" 
+                        aria-checked="true" role="switch" type="button">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li class="range-wrapper">
+                    <label id="font-size-label">Font-size : </label>
+                    <div class="slider">
+                        <div class="slider_rail"></div>
+                        <div class="slider_thumb" tabindex="0" role="slider"
+                            aria-valuenow="100" aria-valuemin="100" aria-valuemax="200"
+                            aria-labelledby="font-size-label">
+                            <span class="slider_thumb_cursor"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <fieldset class="fieldset-police">
+                        <legend class="fieldset-police_legend">Font :</legend>
+                        <ul class="fieldset-police_choices" role="radiogroup">
+                            <li class="fieldset-police_choice">
+                                <label for="police-default">Default :</label>
+                                <input type="radio" name="police" id="police-default" 
+                                class="fieldset-police_choice_radio" value="Roboto">
+                            </li>
+                            <li class="fieldset-police_choice">
+                                <label for="police-openDyslexic">OpenDyslexic :</label>
+                                <input type="radio" name="police" id="police-openDyslexic" 
+                                class="fieldset-police_choice_radio" value="openDyslexic">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+                <li class="switch">
+                    <label class="switch_label" id="p-margin-bottom-label">
+                        Paragraphs height :
+                    </label>
+                    <button class="switch_box switch-p-margin-bottom" type="button"
+                        aria-labelledby="p-margin-bottom-label" aria-checked="true" role="switch">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li class="switch">
+                    <label class="switch_label" id="line-height-label">
+                        Line height :
+                    </label>
+                    <button class="switch_box switch-line-height" type="button"
+                        aria-labelledby="line-height-label" aria-checked="true" role="switch">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li class="switch">
+                    <label class="switch_label" id="word-spacing-label">
+                        Word spacing :
+                    </label>
+                    <button class="switch_box switch-word-spacing" type="button"
+                        aria-labelledby="word-spacing-label" aria-checked="true" role="switch">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li class="switch">
+                    <label class="switch_label" id="letter-spacing-label">
+                        Letter spacing :
+                    </label>
+                    <button class="switch_box switch-letter-spacing" type="button"
+                        aria-labelledby="letter-spacing-label" aria-checked="true" role="switch">
+                        <span class="switch_container">
+                            <span class="switch_position"></span>
+                            <span class="switch_on">ON</span>
+                            <span class="switch_off">OFF</span>
+                        </span>
+                    </button>
+                </li>
+                <li><a href="accessibility" class="page-access">Accessibility page</a></li>
+                <li><button class="shortcuts-button">Keyboard shortcuts</button></li>
+            </ul>
+        </div>
+        <!-- modale d'informations sur les raccourcis clavier -->
+        <div class="top-modal-shortcuts focus-trapping" tabindex="0"></div>
+        <div role="dialog" aria-modal="true" aria-labelledby="modal-shortcuts-title" 
+            aria-describedby="modal-shortcuts-message" class="modal-shortcuts">
+            <button class="modal-shortcuts_close modal-close" aria-label="Close the shortcuts dialog">X</button>
+            <h1 class="modal-shortcuts_heading" id="modal-shortcuts-title">Keyboard Shortcuts</h1>
+            <div class="modal-shortcuts_content">
+                <p class="modal-shortcuts_resume" id="modal-shortcuts-message">
+                    This website contains complex components. You will find descriptions about their behaviors and how to use them with the keyboard below.
+                </p>
+                <p class="modal-shortcuts_how-to-navigate-question">
+                    How to navigate in this window with keyboard ?
+                </p>
+                <p class="modal-shortcuts_how-to-navigate-text">
+                    Informations are contained in an accordion component. <br>
+                    Use 'Tab' to navigate between headers.<br>
+                    When a header is focused, use 'Enter' or 'Space' to open its panel
+                    (when a new panel opens, all the other panels automatically close). <br>
+                    Press 'Escape' key to close this window.
+                </p>
+                <p class="modal-shortcuts_how-to-navigate-note">
+                    Note : you can open this window from any page of the website by simultaneously press 'Control' + 'Alt' + 'S'.
+                </p>
+                <ul class="modal-shortcuts_list" role="presentation">
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Modal window<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                Modal windows can be closed by pressing 'Escape' key.<br>
+                                Focus is trapped inside the window and wrapping focusable elements from the last to the first.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Slider<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                Use arrow keys to set the slider value. <br>
+                                'Arrow up' and 'Arrow right' increase the value. <br>
+                                'Arrow down' and 'Arrow left' decrease the value. <br>
+                                'Page up' increase the value faster than arrow keys.<br>
+                                'Page down' decrease the value faster than arrow keys. <br>
+                                'End' set the slider on its highest value.<br>
+
+                                'Home' set the slider on its lowest value.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Main menu<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                'Enter' or 'Escape' open the page related to the focused menu button.<br>
+                                Use arrow keys to navigate inside the main menu. <br>
+                                'Arrow right' and 'Arrow left' allow you to navigate between main buttons, wrapping from the last to the first. <br>
+                                Some of the main buttons contain a submenu. To open a submenu, press 'Arrow down' or 'Arrow up' when focusing its main button parent.<br>
+                                'Arrow down' open submenu and focus its first item.<br>
+                                'Arrow up' open submenu and focus its last item.<br>
+                                <br> 
+                                Use 'Arrow up' and 'Arrow down' to navigate inside a submenu, wrapping links from last to first. <br>
+                                By default, submenus do not open by focusing main buttons. <br>
+                                However, when a submenu has once been opened, all the submenus automatically open when focusing their main button parent.<br>
+                                To cancel this behavior, close a submenu by pressing 'Escape' key. <br>
+                                Pressing letter key allows you to focus the first button beginning by this letter. <br>
+                                For example, to reach 'Contact' button, press 'C'. <br>
+                                You can do the same inside submenus.<br>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Language select<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                'Enter', 'Space', 'Arrow down' and 'Arrow up' keys open languages menu.<br>
+                                When the menu is closed, 'Arrow down' open it and focus its first item.<br>
+                                When the menu is closed, 'Arrow up' open it and focus its last item.<br>
+                                'Escape' closes the menu. <br>
+                                'Arrow up' and 'Arrow down' allow you to navigate inside the menu, wrapping items from last to first.<br>
+                                Chose a language by pressing 'Enter' or 'Space' keys. If the chosen language is different from the current language, a modal window opens. You can close it (and cancel language choice) by pressing 'Escape'.<br>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Accordion<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                Use 'Tab' key to navigate between headers.<br>
+                                When focusing a header, use 'Enter' or 'Space' key to open its panel
+                                (when a new panel opens, all the other panels automatically close).
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Slide show<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                Slide show is a modal window. Modal window behavior is described above. <br>
+                                When focusing a picture, 'Arrow left' and 'Arrow right' show respectively previous and next picture. <br>
+                                When focus is inside the control bar, use 'Arrow left' and 'Arrow right' to navigate and automatically show pictures.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>
+                            <button class="accordeon-button" aria-expanded="false">
+                                Video player<span class="arrow">&#11206</span>
+                            </button>
+                        </h2>
+                        <div class="section-pictures_panel-container">
+                            <p>
+                                Use 'Tab' to navigate inside the control bar.<br>
+                                Slide behavior is described above. <br>
+                                Press 'Escape' key to quit full screen view. <br>
+                                When focusing the video, press 'Space' key to play or pause the video.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+        <div class="bottom-modal-shortcuts focus-trapping" tabindex="0"></div>
+        <!-- modale de confirmation de changement de langue -->
+        <div role="alertdialog" aria-modal="true" aria-labelledby="modal-lang-title" 
+            aria-describedby="modal-lang-message" class="modal-lang">
+            <button class="modal-lang_close modal-close" aria-label="Close the language dialog">X</button>
+            <h1 class="modal-lang_heading" id="modal-lang-title">Language change</h1>
+            <div class="modal-lang_content">
+                <p class="modal-lang_question" id="modal-lang-message">
+                    Do you want to translate the site content in french ?
+                </p>
+                <ul class="modal-lang_liste" role="presentation">
+                    <li><button type="button" class="modal-lang_confirm modal-lang_yes">Yes</button></li>
+                    <li><button type="button" class="modal-lang_confirm modal-lang_no">No</button></li>
+                </ul>
+            </div> 
+        </div>
+        <!-- slide to view pictures in full screen -->
+        <div role="dialog" aria-modal="true" aria-label="slide" class="modal-slide"></div>
+        <div class="bottom-modal focus-trapping" tabindex="0"></div><!--permet de créer les pièges au focus sur les modales-->
+    </div>
+
+    <div class="body-bis"> <!--body bis permet d'avoir un after qui l'assombrit quand on ouvre la modale-->
+        
+    <header role="banner" id="header">
+        <!-- switch mode contrasté version mobile -->
+        <div class="switch switch-contrast-mobile">
+            <label class="switch_label" id="contrast-label">Contrast mode :</label>
+            <button class="switch_box switch-contrast mobile" aria-labelledby="contrast-label" 
+                aria-checked="true" role="switch" type="button">
+                <span class="switch_container">
+                    <span class="switch_position"></span>
+                    <span class="switch_on">ON</span>
+                    <span class="switch_off">OFF</span>
+                </span>
+            </button>
+        </div>
+        <div class="header_banner">
+            <button class="accessibility" title="Accessibility settings">Accessibility</button>
+            <!-- tree head character -->
+            <img src="./img/Tree-head.png" alt="" class="header_banner_tree-head header_tree display">
+            <!-- dragon -->
+            <img src="./img/dragon-body.png" alt="" class="header_banner_dragon-body header_dragon display">
+            <!-- wavy effect on the bottom of the banner -->
+            <svg class="header_banner_banner-bottom"  aria-hidden="true" viewBox="0 0 829 143" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.999969 142V0.999924C160.5 0.999924 140.5 115.447 210.5 126.5C280.5 137.553 322.5 118 391 121C459.5 124 474.5 139.5 553.5 136.5C632.5 133.5 649.5 126 742.5 126C835.5 126 828 136.5 828 136.5V142H0.999969Z"/>
+            </svg>
+            <svg class="header_banner_banner-bottom-mobile" aria-hidden="true" viewBox="0 0 433 22" xmlns="http://www.w3.org/2000/svg">
+                <path d="M432 21H2.00006L1 7C41 1.99997 81 15 157 15C233 15 241 7.00003 304 2.00003C367 -2.99997 432 15 432 15V21Z"/>
+            </svg>
+            <!-- wavy effect on the bottom of the banner -->    
+        </div>
+        <!-- pieces of characters over the main menu  -->
+        <div class="characters-elements">
+            <img src="./img/dragon-head.png" alt="" class="header_dragon-head header_dragon display">
+            <img src="./img/dragon-breathe.png" alt="" class="header_dragon-breathe header_dragon display">
+            <img src="./img/dragon-wing.png" alt="" class="header_dragon-wing header_dragon display">
+            <img src="./img/Tree-left-hand.png" alt="" class="header_tree-left-hand header_tree display">
+            <img src="./img/Tree-right-hand.png" alt="" class="header_tree-right-hand header_tree display">
+            <div class="header_drone-wrapper">
+                <img src="./img/drone.png" alt="" class="header_drone display">
+                <div class="header_drone-red-light"></div>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="menu-container">
+        <span class="menu-container_logo-wrapper">
+        <!--SVG LOGO -->   
+            <svg class="menu-container_logo"
+                aria-hidden="true"
+                version="1.1" 
+                id="logo" 
+                xmlns="http://www.w3.org/2000/svg"  
+                x="0px" y="0px"
+                viewBox="0 0 169 38">
+                <!-- Dy -->
+                <path class="header_menu-container_logo-Dy logo-part" d="M5.5,5.5l4,28c0,0,20-7,19-14C25.94,1.57,5.5,5.5,5.5,5.5z" 
+                pathLength="1"/>
+                <line class="header_menu-container_logo-Dy logo-part" x1="38.5" y1="29.5" x2="47.5" y2="8.5" 
+                pathLength="1"/>
+                <line class="header_menu-container_logo-Dy logo-part" x1="39.5" y1="20.5" x2="34.5" y2="9.5" 
+                pathLength="1"/>
+                <!-- s  -->
+                <path class="header_menu-container_logo-s logo-part" d="M66,10c0,0-12.47-2.5-12.5,3.5C53.44,23.8,68,13,68,24c0,3-14.5,5.5-14.5,5.5"
+                pathLength="1"/>
+                <!-- k -->
+                <line class="header_menu-container_logo-k logo-part" x1="73.89" y1="8.42" x2="74.59" y2="29.2" 
+                pathLength="1"/>
+                <polyline class="header_menu-container_logo-k logo-part" points="86.5,26.5 78,18 83.5,11.5 " 
+                pathLength="1"/>
+                <!-- r -->
+                <path class="header_menu-container_logo-r logo-part" d="M89,9c0,0,12.5-1.5,12.5,5.5s-10,5-10,5l8,10" 
+                pathLength="1"/>
+                <!-- e -->
+                <polyline class="header_menu-container_logo-e logo-part" points="121,29.5 109.5,29.5 109.5,9.5 120,9.5 " 
+                pathLength="1"/>
+                <line class="header_menu-container_logo-e logo-part" x1="111.5" y1="17.5" x2="119" y2="17" 
+                pathLength="1"/>
+                <!-- Dy -->
+                <path class="header_menu-container_logo-Dy logo-part" d="M126.5,11.5" 
+                pathLength="1"/>
+                <path class="header_menu-container_logo-Dy logo-part" d="M126.5,6.5l4,28c0,0,20-7,19-14C146.94,2.57,126.5,6.5,126.5,6.5z"
+                pathLength="1"/>
+                <line class="header_menu-container_logo-Dy logo-part" x1="157.5" y1="30.5" x2="166.5" y2="9.5" 
+                pathLength="1"/>
+                <line class="header_menu-container_logo-Dy logo-part" x1="158.5" y1="21.5" x2="153.5" y2="10.5" 
+                pathLength="1"/>
+            </svg>
+        <!--SVG LOGO -->
+        </span>
+        <nav role="navigation" id="main-menu" class="menu" tabindex=-1 >
+            <ul class="menu-container_menu" role="menubar" aria-label="main"
+                aria-orientation="horizontal">
+                <!-- indiquer la page active par une couleur ! -->
+                <li class="nav_link nav_link--active nav_link--portfolio current-page">
+                    <a class="nav_link_heading" role="menuitem" href="/en" 
+                        tabindex="0" aria-current="page" aria-haspopup="menu" aria-expanded="false"
+                        id="portfolio-menu-item">
+                        Portfolios<span aria-hidden="true" class="navlink-arrow">&#x2BC6;</span>
+                    </a>
+                    <ul class="submenu" role="menu" aria-labelledby="portfolio-menu-item">
+                        <li class="submenu_link">
+                            <a href="technopolice_en" role="menuitem" tabindex="-1">Technopolice</a>
+                        </li>
+                        <li class="submenu_link">
+                            <a href="dreams" role="menuitem" tabindex="-1">Dreams</a>
+                        </li>
+                        <li class="submenu_link">
+                            <a href="paintings" role="menuitem" tabindex="-1">Paintings</a>
+                        </li>
+                        <li class="submenu_link">
+                            <a href="photos_en" role="menuitem" tabindex="-1">Photos</a>
+                        </li>
+                        <li class="submenu_link">
+                            <a href="videos_en" role="menuitem" tabindex="-1">Videos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav_link nav_link--a-propos">
+                    <a class="nav_link_heading" href="about" role="menuitem"
+                        tabindex="-1">About</a>
+                </li>
+                <li class="nav_link">
+                    <a class="nav_link_heading" href="contact_en" role="menuitem"  
+                        tabindex="-1">Contact</a>
+                </li>
+            </ul>
+            <!-- icone hamburger menu mobile -->
+            <button class="menu-container_menu-mobile" aria-label="main menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            <div class="menu-container_debord"></div>
+        </nav>
+    </div>
+
+    <!-- pour avoir le copyright qui disparaît quand non focus -->
+    <div class="mainAndFooterContainer"> 
+    <main role="main" id="main" tabindex=-1 aria-label="main content">
+        <h1>Videos</h1>
+
+        <div class="social-networks">
+            <a href=# title="youtube link - disabled" class="social-networks_icone" aria-disabled="true">
+                <!-- icone youtube -->
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                role="img"
+                aria-label="youtube"
+                class="social-networks_svg"
+                viewBox="0 0 576 512">
+                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 
+                    64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 
+                    42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 
+                    48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 
+                    42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 
+                    11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 
+                    81.205-142.739 81.201z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/photoglodyte/?next=%2F" target="_blank" title="instagram link - open in new tab" aria-label="instagram link" 
+                class="social-networks_icone">
+                <!-- icone instagram -->
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                role="img"
+                aria-label="instagram"
+                class="social-networks_svg"
+                viewBox="0 0 448 512">
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 
+                    339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 
+                    74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 
+                    26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 
+                    27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 
+                    0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 
+                    35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 
+                    67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 
+                    388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 
+                    2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 
+                    9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 
+                    9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+            </a>
+        </div>
+        <div role="combobox" class="language" aria-label="language"
+            aria-controls="language-list" aria-activedescendant="english" aria-haspopup="listbox" 
+            aria-expanded="false" tabindex="0">
+            <span>EN</span><span>&#x2BC6;</span>
+            <ul role="listbox" class="language_list" tabindex="-1" id="language-list">
+                <li class="language_listitem" id="french" role="option" aria-selected="false">
+                    FR<span class="language_listitem-selection" aria-hidden="true">&#x2714;</span>
+                </li> 
+                <li class="language_listitem" id="english" role="option" aria-selected="true">
+                    EN<span class="language_listitem-selection" aria-hidden="true">&#x2714;</span> 	
+                </li>
+            </ul>
+        </div>
+        <a href="/en" class="breadcrumb">&#11164; Back to portfolios</a>
+        <section class="section-videos">
+            <div class="portfolios-videos-container">
+                <h2 class="portfolios-video-title"><span lang="fr">Prades</span> Park (5:00)</h2>
+                <div class="container-for-visible-focus">
+                    <div class="portfolios-video-player">
+                        <video tabindex="0">
+                            <source src="./img/videos/prades.mp4" type="video/mp4">
+                        </video>
+                        <img src="./img/videos/prades-video-background.jpg" alt="" class="portfolios-video-player_background display">
+                        <button class="portfolios-video-player_initial-play display" aria-label="Play the video">
+                            <span>&#9205;</span>
+                        </button>
+                        <div class="portfolios-video-player_control-bar display">
+                            <div class="portfolios-video-player_control-bar_time-container">
+                                <button class="video-play" aria-label="Play the video">
+                                    <span class="play-symbol">&#9205;</span>
+                                    <span class="pause-symbol">&#9208;</span>
+                                </button>
+                                <div class="slider video-time-line">
+                                    <div class="slider_rail">
+                                        <div class="slider_progression"></div>
+                                    </div>
+                                    <div class="slider_thumb" tabindex="0" role="slider"
+                                        aria-valuenow="0" aria-valuemin="0" aria-valuemax=""
+                                        aria-valuetext="0 minute et 0 seconde" aria-label="Time line">
+                                        <span class="slider_thumb_cursor"></span>
+                                    </div>
+                                </div>
+                                <div class="video-time-indicators">
+                                    <span class="video-controls_control-bar_current-time">0:00</span>
+                                    <span>/</span>
+                                    <span class="video-controls_control-bar_max-time"></span>
+                                </div>
+                            </div>
+                            <div class="portfolios-video-player_control-bar_volume-container">
+                                <button class="video-volume-button">
+                                    <span class="mute-symbol volume-symbol display"
+                                        aria-label="muted">&#128360;</span>
+                                    <span class="low-volume-symbol volume-symbol"
+                                        aria-label="low volume">&#128361;</span>
+                                    <span class="high-volume-symbol volume-symbol"
+                                        aria-label="high volume">&#128362;</span>
+                                </button>
+                                <div class="slider video-volume">
+                                    <div class="slider_rail">
+                                        <div class="slider_progression"></div>
+                                    </div>
+                                    <div class="slider_thumb" tabindex="0" role="slider"
+                                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                        aria-label="">
+                                        <span class="slider_thumb_cursor"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="portfolios-video-player_control-bar_full-screen"
+                                aria-label="Go to full screen mode">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.4 87.97" class="full-screen-svg display">
+                                    <g id="Calque_2" data-name="Calque 2">
+                                        <g id="Calque_1-2" data-name="Calque 1">
+                                            <polygon class="cls-1" points="90.4 0 53.87 9.79 80.61 36.53 90.4 0"/>
+                                            <rect class="cls-1" x="48.49" y="21.45" width="22.73" height="17" transform="translate(-3.65 51.1) rotate(-45)"/>
+                                            <polygon class="cls-1" points="0 87.97 34.63 78.7 9.28 53.35 0 87.97"/><rect class="cls-1" x="18.1" y="51.03" width="21.88" height="17" transform="translate(91.66 81.09) rotate(135)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.4 95.16" class="full-screen-exit-svg">
+                                    <g id="Calque_2" data-name="Calque 2">
+                                        <g id="Calque_1-2" data-name="Calque 1">
+                                            <polygon class="cls-1" points="51.81 44 88.33 34.21 61.59 7.47 51.81 44"/>
+                                            <rect class="cls-1" x="70.98" y="5.55" width="22.73" height="17" transform="translate(150.51 -34.25) rotate(135)"/>
+                                            <polygon class="cls-1" points="42.78 52.97 8.16 62.25 33.5 87.6 42.78 52.97"/>
+                                            <rect class="cls-1" x="2.81" y="72.92" width="21.88" height="17" transform="translate(-53.55 33.57) rotate(-45)"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="video-transcription_title" aria-controls="transcription-1" 
+                    aria-expanded="false">
+                    Verbatim Transcription <span class="up-arrow">&#11205;</span><span class="down-arrow">&#11206</span>
+                </button>
+                <p class="video-transcription_text section-text">
+                        Piano music during the whole video. <br>
+                        View on the 'Canigou' mountain at sunrise. <br>
+                        Fixed shot of a tree. The grass is whitened by frost. <br>
+                        A jet of water rises in the center of a body of water located in the park. <br>
+                        Fixed shot on a bridge with red railings and the 'Canigou' mountain in the background. <br>
+                        Traveling shot giving a view of the park, including the fountain seen earlier. <br>
+                        Graduate focus on the moon in the sky. It's a little lighter. <br>
+                        Two black adult swans emerge from the water with their five baby gray swans. <br>
+                        Ducks wait at the water's edge while the sun rises. <br>
+                        Swans walk in the grass with their young. <br>
+                        The sun is starting to peek through the trees. <br>
+                        Dew drops are falling from a drawbar. <br>
+                        The sun passes over the trees. <br>
+                        An other body of water with a multitude of ducks. Cars pass in the background. <br>
+                        The two swans are sitting in the grass and their young are eating grass around them. <br>
+                        A little bird is walking in the grass, looking for something to eat. <br>
+                        Piano music slows down then stop. <br>
+                        Piano music starts again. <br>
+                        A coot walks on a frozen part of a body of water. The ice shatters under its feet. <br>
+                        Ducks move in the water from which reeds emerge, the light is warm. <br>
+                        A redstart takes flight. <br>
+                        Travelling to another area of the park. A leaveless tree is partly submerged in water. <br>
+                        Two baby swans are sitting in the grass. The one on the left gets up then walk to join one of his parents. <br>
+                        New view on the 'Canigou' mountain with trees in front. The sun has risen. <br>
+                        Piano music speeds up and notes become acute. <br>
+                        Water jets rise in the middle of a roundabout and filter the sun's rays. <br>
+                        A butterfly passes over long frozen grass, lit by the sun. <br>
+                        A black swan sits with its five youngs around it. One of them fidgets and ends up sitting against him. <br>
+                        Fixed shots of a massive tree stump then of trees lined up. <br>
+                        One of the black swan is sitting and one of its young walks up to hide behind it.
+                        Music slows down then stop. <br>
+                        Piano music starts again. <br>
+                        Gradual focus on a body of water with ducks. <br>
+                        Same body of water shown from a different point of view. Steam rises above the water. <br>
+                        One of the black swans eats grass while standing under a mimosa tree.  <br>
+                        A little bird is perched at the top of a bush<br>
+                        Slow zoom on a duck perched at the top of a wooden post, standing on one leg. <br>
+                        Same body of water as previously shown from the same point of view. <br>
+                        Zoom on the little bird. <br>
+                        Body of water with a cormorant moving slowly on its surface. <br>
+                        The black swans and their young move forward, they pass under a wooden beam mounted on springs. The backlight highlights the fur of the little swans.  <br> 
+                        Piano music slows down then stop. <br>
+                        Fade to black followed by a slow zoom on a gray heron from behind, feet in the water in warm light. <br>
+                        Piano chord. <br>
+                        Fade to black followed by a fixed shot of the 'Canigou' mountain in fading sunlight. <br>
+                        Piano chord. <br>
+                        Fade to black followed by a fixed shot showing the black swans and their babies moving away across the body of the water then disappearing behing reeds. <br>
+                        Three piano chords played slowly. <br>
+                        Final fade to black followed by the credits with the first image of the canigou at sunrise as a background. <br>
+                        <span lang="fr">Prades</span> park, <span lang="fr">Saint Cyprien</span> (66750), winter 2021 <br>
+                        Realized by DyskreDy <br>
+                        Music : Shadow of beauty (Yoav Ilan)
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" tabindex=-1 role="contentinfo">
+        <span class="footer_accessibilite">
+            <a href="./accessibility">
+                Accessibility : partially compliant
+            </a>
+        </span>
+        <span class="footer_realized-by">
+            <a href="#" target="_blank" aria-disabled="true">Site made by ...</a>
+        </span>
+    </footer>
+    <div class="copyright">
+        <span class="copyright_heading">copyright 2023</span>
+        <p class="copyright_text" tabindex=0>The whole content of this website (design, texts, images) 
+            is protected by copyright law.</p>
+    </div>
+    <button class="top-page" aria-label="go to top of page">
+        <span class="top-page_arrow-head"></span>
+        <span class="top-page_arrow-body"></span>
+    </button>
+</div>
+</div>
+<!-- Scripts -->
+<script src="./main.ts" type="module"></script>
+</body>
+
+</html>

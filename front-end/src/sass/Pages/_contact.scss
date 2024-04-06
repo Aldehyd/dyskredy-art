@@ -1,0 +1,99 @@
+.form-responsive-container {
+    max-width: 40rem;
+    width: 100%;
+    margin: auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    margin: auto;
+    width: 100%;
+    &_line {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        &:first-child {
+            align-self: center;
+        }
+        &:nth-child(2) {
+            margin-top: 15px;
+        }
+    }
+    & input:not([type=submit]),textarea {
+        resize: none;
+        max-width: 100%;
+        font-size: 1.4rem;
+        margin: 5px 0;
+        padding: 5px;
+        border: none;
+        border-radius: 0.7rem;
+        color: map-get($palette,textInFieldsColor);
+    }
+    &_submit {
+        @include designComposants($contactSubmitButton);
+        box-shadow: map-get($box-shadow-offset,navLink) map-get($box-shadow-offset,navLink) map-get($palette,shadowColorDefault);
+        transition: map-get($transitions,navLink);
+        cursor: pointer;
+        &:hover {
+            transform: translateX(map-get($box-shadow-offset,navLink)) translateY(map-get($box-shadow-offset,navLink));
+            box-shadow: none;
+           }
+    }
+    & .invalid-field-alert {
+        display: none;
+        color: map-get($palette,invalidField);
+        font-weight: bold;
+        &.display {
+            display: block;
+        }
+    }
+    & input.invalid {
+        border: solid 2px map-get($palette,invalidField);
+    }
+    & textarea.invalid {
+        border: solid 2px map-get($palette,invalidField);
+    }
+    & .main-messages-container {
+        width: 100%;
+        display: flex;
+    }
+    & .main-alert {
+        display: none;
+        margin: auto;
+        @include designComposants($errorMessage);
+        &.display {
+            display: block;
+        }
+    }
+    & .waiting-message {
+        display: none;
+        margin: auto;
+        @include designComposants($waitingMessage);
+        &.display {
+            display: block;
+        }
+    }
+    & .success-message {
+        display: none;
+        margin: auto;
+        @include designComposants($successMessage);
+        &.display {
+            display: block;
+        }
+    }
+}
+#messageContent {
+    height: 20rem;
+}
+
+.g-recaptcha iframe {
+    @include mobile {
+        width: 18rem !important;
+    }
+    & > div {
+        width: fit-content !important;
+    }
+}

@@ -1,0 +1,35 @@
+.section-photos .panel-pictures {
+    display: none;
+    animation: map-get($animations,picturesPanelNoAnimation);
+}
+body.animate .section-photos .panel-pictures {
+    display: none;
+    animation: map-get($animations,picturesPanel);
+}
+.section-photos.display .panel-pictures, body.animate .section-photos.display .panel-pictures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.accordeon-button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    @include designComposants($accordeonButton);
+    margin-bottom: 1rem;
+    box-shadow: map-get($box-shadow-offset,accordeonButton) map-get($box-shadow-offset,accordeonButton) map-get($palette,shadowColorDefault);
+    cursor: pointer;
+    transition: transform 200ms ease-out;
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,accordeonButton),map-get($box-shadow-offset,accordeonButton));
+        box-shadow: none;
+    }
+    & .arrow {
+        transition: transform 200ms ease-in-out;
+    }
+    &[aria-expanded=true] .arrow {
+        transform: rotate(180deg);
+    }
+}

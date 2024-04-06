@@ -1,0 +1,145 @@
+.menu {
+    height: auto;
+    z-index: 6;
+}
+.menu-container {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    height: $menuHeight;
+    padding: map-get($paddings,menuContainer);
+    @include mobile {
+        padding: map-get($paddings,menuContainerMobile);
+    }
+    @include flex(space-between);
+    background-color: map-get($palette,menuColor);
+    border-bottom: solid 2px map-get($palette,borderColor);
+    &_logo-wrapper {
+        width: auto;
+        height: auto;
+        padding: 10px 0;
+        @media screen and (max-width: map-get($break-points,forLogo)) {
+            visibility: hidden;
+        }
+        @include mobile {
+            visibility: visible;
+            padding-bottom: 0;
+        }
+    }
+    &_logo {
+        width: $logoWidth;
+        stroke: map-get($palette,logoColor);
+        stroke-width: 4px;
+        stroke-dasharray: 1;
+        stroke-dashoffset: -1;
+        fill: none;
+    }
+    &_menu {
+        @include flex(space-around);
+        gap: $menuGap;
+        width: $menuWidth; //anciennement map-get($menuWidth,1400);
+        height: auto;
+        z-index: 6;
+        list-style: none;
+        text-align: center;
+        @include mobile {
+            display: none;
+        }
+    }
+    &_menu-mobile {
+        @include designComposants($menuBurger);
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        box-shadow: map-get($box-shadow-offset,menuBurger) map-get($box-shadow-offset,menuBurger) map-get($palette,shadowColorDefault);
+        margin-top: map-get($margins,topNavLink);
+        transition: map-get($transitions,menuBurger);
+        @include mobile {
+            display: flex;
+        }
+        &:hover {
+            transform: translate(map-get($box-shadow-offset,menuBurger),map-get($box-shadow-offset,menuBurger));
+            box-shadow: none;
+        }
+        &:focus {
+            transform: translate(map-get($box-shadow-offset,menuBurger),map-get($box-shadow-offset,menuBurger));
+            box-shadow: none;
+        }
+    }
+    &_debord {
+        @include designComposants($debord);
+        position: absolute;
+        right: 0;
+        top: $menuHeight - 2px;
+        border-width: 0 0 2px 2px;
+        @include mobile {
+            width: 100%;
+            border-radius: 0;
+        }
+    }
+}
+body.animate .header_menu-container {
+    &_logo {
+        stroke-dashoffset: -1;
+    }
+    &_logo-Dy {
+        animation: map-get($animations,logo-Dy);
+    }  
+    &_logo-s {
+        animation: map-get($animations,logo-s);
+    }
+    &_logo-k {
+        animation: map-get($animations,logo-k);
+    }
+    &_logo-r {
+        animation: map-get($animations,logo-r);
+    }
+    &_logo-e {
+        animation: map-get($animations,logo-e);
+    }
+}
+body:not(.animate) .menu-container {
+    &_logo {
+        stroke-dashoffset: 0;
+    }
+}
+
+.nav_link--active .submenu_link {
+    background-color: map-get($palette,bgBottomColor);
+}
+.submenu {
+    display: none;
+    transition: map-get($transitions,sousMenu);
+    position: relative;
+    top: 10px;
+    width: 100%;
+    list-style: none;
+    font-size: map-get($font-size,sous-menu_link);
+    &_link {
+        position: relative;
+        padding: map-get($paddings,sousMenuLink);
+        text-align: center;
+        background-color: map-get($palette,bgTopColor);
+        border-top: solid map-get($palette,borderColor) 1px;
+        &:hover {
+            background-color: darken(map-get($palette,menuColor),10);
+        }
+    }
+}
+
+.navlink-arrow { 
+    display: inline-block; 
+    transition: 200ms ease-in-out;
+    transform-origin: 50% 60%;
+}
+.navlink[aria-expanded=false] .navlink-arrow {
+    transform: rotate(0);
+}
+.navlink[aria-expanded=true] .navlink-arrow {
+    transform: rotate(180);
+}

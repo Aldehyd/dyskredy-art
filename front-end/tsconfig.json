@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "ESNext",
+        "lib": ["ESNext","DOM","DOM.Iterable"],
+        "moduleResolution": "Node",
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noEmit": false,
+        "noEmitOnError": true,
+        "skipLibCheck": true,
+        "outDir": "dist"
+    },
+    "include": ["src"]
+}

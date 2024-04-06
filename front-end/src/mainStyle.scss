@@ -1,0 +1,25 @@
+
+
+//-------- import -------------------
+
+//-------- utils --------------------
+@import "./sass/Utils/colors.scss";
+@import "./sass/Utils/variables.scss";
+@import "./sass/Utils/mixins.scss";
+//-------- base ---------------------
+@import "./sass/Base/general-rules.scss";
+//-------- composants ---------------
+@import "./sass/Composants/composants.scss";
+//-------- layout -------------------
+@import "./sass/Layout/body.scss";
+@import "./sass/Layout/header.scss";
+@import "./sass/Layout/main.scss";
+@import "./sass/Layout/footer.scss";
+@import "./sass/Layout/menu.scss";
+//-------- pages --------------------
+@import "./sass/Pages/accessibility";
+@import "./sass/Pages/error404.scss";
+@import "./sass/Pages/contact.scss";
+@import "./sass/Pages/photos";
+@import "./sass/Pages/portfolios";
+//-------- import -------------------

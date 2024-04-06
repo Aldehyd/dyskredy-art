@@ -1,0 +1,575 @@
+
+$break-points: (
+    //créer un break point mobile petit car pour le redmi9 les contenus se chevauchent !
+    mobile: 650px,
+    forLogo: 720px,
+    tablette: 900px,
+    ordi: 1200px,
+    forTreeCharacter: 1250px,
+    forDragon: 1050px,
+    forDragonBreathe: 1250px,
+    forSvg: 1250px
+);
+
+$font-size: ( 
+    default: 1.4rem, 
+    accessibilite: 1.6rem,  
+    modalAccess: 1.6rem, 
+    menuMobile: 2rem,
+    h1: 2.6rem,
+    h1-modalLang: 2rem,
+    h2: 2rem,
+    h3: 1.8rem,
+    h4: 1.6rem,
+    p: 1.4rem,
+    nav_link: 2rem,
+    sous-menu_link: 1.8rem,
+    socialNetwork: 1rem,
+    language: 2rem,
+    breadCrumb: 1.5rem,
+    accessibiliteBottom: 1.6rem,
+    accordeonButton: 1.6rem,
+    detailledDescriptionButton: 1.4rem,
+    realized-by: 1.6rem,
+    copyright: 1.6rem,
+);
+
+$paddings: (
+    modalAccess: 40px,
+    modalAccessClose: 5px 10px,
+    modalAccessListe: 2rem,
+    modalAccessRange: 0px 2.5px,
+    rangeWrapper: 5px,
+    rangeWrapperFocus: 3px,
+    modalLang: 60px,
+    fieldsetPolice: 15px 30px,
+    fieldsetLegend: 0 5px 0 5px,
+    fieldsetChoice: 5px,
+    fieldsetChoiceFocus: 3px,
+    switch: 5px 10px,
+    switchFocus: 3px 8px,
+    menuMobile: 20px 60px,
+    banner: 50px 40px,
+    menuContainer: 0px 40px,
+    menuContainerMobile: 0px 5px,
+    navLink: 10px,
+    navLinkPortFolio: 1rem,
+    sousMenuLink: 10px,
+    h1: 1rem,
+    language: 5px,
+    languageListItem: 0 5px,
+    main: 6rem 80px 80px 80px,
+    mainMobile: 14rem 5px 5rem 5px,
+    footer: 50px 40px,
+    footerFontSize2: 70px 40px,
+    footerFontSize3: 120px 40px,
+    footerFontSize4: 200px 40px,
+);
+
+$margins: (
+    modalAccessListe: 40px 0 0 0,
+    modalLangListe: 20px 0 20px 0,
+    modalAccessRadios: 1rem,
+    fieldsetFirstChoice: 10px,
+    fieldsetChoice: 0px 10px 0px 20px,
+    menuMobile: 40px 0px,
+    bottomH1: 80px,
+    bottomH1Mobile: 0px,
+    topNavLink: 10px,
+    portfolioGrid: 50px auto,
+);
+
+$box-shadow-offset: (
+    accessibilite: 2px,
+    modalAccess: 0px,
+    modalAccessClose: 1px,
+    modalLangConfirm: 2px,
+    pageAccess: 2px,
+    menuBurger: 2px,
+    navLink: 2px,
+    h1: 2px,
+    socialNetwork: 2px,
+    language: 2px,
+    preview: 5px,
+    accordeonButton: 2px,
+    portfoliosImages: 3px,
+    videoTranscription: 2px,
+    topPage: 0px,
+    accessibiliteBottom: 2px,
+    realizedBy: 2px,
+    copyright: 2px,
+);
+
+$transitions: (
+    accessibilite: all 200ms ease,
+    pageAccess: all 200ms ease,
+    pageAccessSwitch: transform 200ms ease-in-out,
+    menuBurger: all 200ms ease,
+    dragonWing: transform 300ms 200ms ease-out,
+    dragonHead: transform 300ms 300ms ease-out,
+    treeHead: 200ms ease-out,
+    drone: transform 300ms 700ms ease-out,
+    navLink: transform 200ms ease,
+    navLinkPortFolios: transform 200ms ease,
+    sousMenu: transform 200ms ease-out,
+    sousMenuLink: opacity 150ms ease-in-out,
+    language: all 200ms ease,
+    modalLangConfirm: transform 100ms ease,
+    socialNetwork: all 200ms ease,
+    preview: all 200ms ease-out,
+    portfoliosImages: transform 200ms ease-out,
+    videoTranscription: transform 200ms ease-out,
+    topPage: all 200ms ease-in-out,
+    accessibiliteBottom: all 200ms ease,
+    realizedBy: all 200ms ease,
+    copyright: transform 400ms ease,
+);
+
+//animations
+$animations: (
+    modal: modalAppear 500ms ease,
+    menuMobile: menuMobileAppear 200ms ease backwards,
+    dragon-breathe: dragonBreatheAppearDesappear 700ms 400ms linear,
+    drone-red-light: droneRedLight 300ms 1000ms linear,
+    logo-Dy: logoAppear 600ms 400ms ease forwards,
+    logo-s: logoAppear 400ms 1200ms ease forwards,
+    logo-k: logoAppear 400ms 1600ms ease forwards,
+    logo-r: logoAppear 400ms 2000ms ease forwards,
+    logo-e: logoAppear 400ms 2400ms ease forwards,
+    subMenu: subMenuAppear 500ms ease,
+    h1: titleAppear 600ms 400ms ease forwards,
+    h1NoAnimation: titleAppear forwards,
+    topPage: top-pageAppear 250ms ease backwards,
+    preview: previewAppear 800ms cubic-bezier(.9,0,.1,1) backwards,
+    previewHeading: headingAppear 800ms 400ms ease forwards,
+    previewHeadingNoAnimation: headingAppear forwards,
+    previewPicture: pictureAppear 300ms 800ms ease forwards,
+    previewPictureNoAnimation: pictureAppear forwards,
+    picturesPanel: photosAppear 300ms ease-out backwards,
+    picturesPanelNoAnimation: photosAppear ease-out backwards,
+    detailledDescription: descriptionAppear 300ms ease-in-out backwards,
+);
+@keyframes dragonBreatheAppearDesappear {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 0;
+        transform: scale(0);
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        transform-origin: 100% 0;
+        transform: scale(0.9);
+    }
+    60% {
+        transform-origin: 100% 0;
+        transform: scale(1);
+    }
+    90% {
+        transform-origin: 0 100%;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes droneRedLight {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(50);
+    }
+}
+@keyframes logoAppear {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes subMenuAppear {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+@keyframes titleAppear {
+    to {
+        transform: translate(-3px,-3px);
+        box-shadow: map-get($box-shadow-offset,h1) map-get($box-shadow-offset,h1) map-get($palette,shadowColorDefault);
+    }
+}
+@keyframes previewAppear {
+    0% {
+        border: none;
+    }
+    0%, 40% {
+        box-shadow: none;
+    }
+    40%,100% {
+        border: solid 2px map-get($palette,borderColor);
+    }
+    100% {
+        transform: translate(map-get($box-shadow-offset,preview) map-get($box-shadow-offset,preview));
+    }
+}
+@keyframes headingAppear {
+    to {
+        opacity: 1;
+    }
+}
+@keyframes pictureAppear {
+    to {
+        transform: translateY(0%);
+    }
+}
+@keyframes photosAppear {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes top-pageAppear {
+    0% {
+        transform: scale(0);
+    }
+}
+@keyframes modalAppear {
+    0% {
+        transform: scale(0);
+    }
+}
+@keyframes menuMobileAppear {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes descriptionAppear {
+    from {
+        transform: scaleY(0);
+    }
+}
+
+//modal
+$modalAccessListeGap: 20px;
+$modalAccessListeInternGap: 10px;
+//modal range
+$modalAccessRangeWidth: 12rem;
+$modalAccessRangeWidthMobile: 100px;
+$modalAccessRangeHeight: 2.5rem;
+$modalAccessRangeThumbSize: 2rem;
+//modal switch
+$modalAccessSwitchWidth: 6rem;
+$modalAccessSwitchHeight: 2.5rem;
+$positionOffset: 0.25rem;
+$positionSize: 2rem;
+$ONandOFFOffset: 10%;
+$translateSwitch: $modalAccessSwitchWidth - $positionSize - $positionOffset*2;
+
+//menu mobile
+$menuMobileGap: 30px;
+
+
+//body
+$bodyMaxWidth: 1400px;
+$bodyMinHeight: 100vh; //pour avoir footer collé en bas
+
+//titres
+$h1Width: 20rem;
+$h1Border: solid 2px map-get($palette,borderColor);
+$h1BorderRadius: 2rem;
+
+//bannière
+$bannerHeight: 200px;
+
+//logo
+$logoWidth: 180px;
+
+//menu principal
+$menuHeight: 60px; 
+$menuWidth: auto; 
+$menuGap: 15px;
+
+//social networks
+$decalageTopSocialNetworks: 6rem;
+$decalageLeftSocialNetworks: 20px;
+$socialNetworksWidth: auto;
+$socialNetworksHeight: auto;
+$socialNetworksGap: 10px;
+$socialNetworksSVGSize: 4rem;
+
+//section main
+$mainBg: linear-gradient(180deg,map-get($palette,bgTopColor),map-get($palette,bgBottomColor));
+
+//portfolio-accueil
+$portfolio-gridWidth: 75%;
+$portfolio-gridHeight: 1300px;
+$portfolio-gridWitdhTablette: 80%;
+$portfolio-gridHeightTablette: 1000px;
+$portfolio-gridWidthMobile: 70%;
+$portfolio-gridHeightMobile: 1000px;
+$grid-gap: 40px;
+
+//footer
+$footerGap: 20px;
+$footerPaddingBottomMobile: 80px;
+
+//copyright
+$copyright_width: 50%;
+
+
+//design des composants élémentaires
+$accessibilite:(
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgBottomColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,textColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,accessibilite),
+    positionTop: 50px,
+    positionLeft: 30px
+);
+$pageAccess:(
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgTopColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 2rem,
+    font-size: map-get($font-size,modalAcess),
+);
+$menuBurger:(
+    width: 60px,
+    height: 90%,
+    padding: 10px, 
+    bg: map-get($palette,bgTopColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,nav_link),
+);
+$navLinks:(
+    width: auto,
+    height: fit-content, 
+    padding: 10px 0, 
+    bg: map-get($palette,bgTopColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,nav_link),
+);
+$debord:(
+    width: 53rem, 
+    height: 3rem,
+    padding: 0, 
+    bg: map-get($palette,menuColor), 
+    color: map-get($palette,textColor),
+    border: solid map-get($palette,borderColor),
+    border-radius: 0 0 0 2rem,
+    font-size: map-get($font-size,nav_link),
+);
+$social-media-icone:(
+    width: auto,
+    height: auto,
+    padding: 5px, 
+    bg: map-get($palette,bgBottomColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,socialNetwork),
+);
+$language:(
+    width: auto,
+    height: auto,
+    padding: 10px, 
+    bg: map-get($palette,bgBottomColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,language),
+);
+$breadCrumb:(
+    width: fit-content,
+    height: auto,
+    padding: 1rem, 
+    bg: map-get($palette,bgBottomColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,breadCrumb),
+);
+$accordeonButton:(
+    width: 100%,
+    height: auto,
+    padding: 1rem 3rem,
+    bg: map-get($palette,menuColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,accordeonButton),
+);
+$detailledDescriptionButton:(
+    width: fit-content,
+    height: auto,
+    padding: 0 0.5rem 0.5rem 0.5rem, 
+    bg: map-get($palette,menuColor), 
+    color: map-get($palette,textColor),
+    border: solid map-get($palette,borderColor),
+    border-radius: 0 0 1rem 1rem,
+    font-size: map-get($font-size,detailledDescriptionButton),
+);
+$videoTranscriptionButton:(
+    width: fit-content,
+    height: auto,
+    padding: 0.5rem, 
+    bg: map-get($palette,menuColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,detailledDescriptionButton),
+);
+$sectionText: (
+    width: 90%,
+    height: auto,
+    padding: 20px, 
+    bg: map-get($palette,menuColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    // font-size: map-get($font-size,language),
+);
+$contactSubmitButton:(
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgBottomColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,realized-by),
+);
+$waitingMessage:(
+    width: fit-content,
+    height: auto,
+    padding: 10px, 
+    bg: map-get($palette,bgFormMessage),
+    color: map-get($palette,textInFieldsColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,realized-by),
+);
+$successMessage:(
+    width: fit-content,
+    height: auto,
+    padding: 10px, 
+    bg: map-get($palette,bgFormMessage),
+    color: map-get($palette,successMessageText),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,realized-by),
+);
+$errorMessage:(
+    width: fit-content,
+    height: auto,
+    padding: 10px, 
+    bg: map-get($palette,bgFormMessage),
+    color: map-get($palette,errorMessageText),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,realized-by),
+);
+$preview:(
+    width: auto,
+    height: auto,
+    padding: 0, 
+    bg: transparent, 
+    color: map-get($palette,textColor),
+    border: none,
+    border-radius: 1rem,
+    font-size: map-get($font-size,default),
+);
+$backToSafePlace:(
+    width: fit-content,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgTopColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,accessibiliteBottom),
+);
+$top-page: (
+    width: 6rem,
+    height: 6rem,
+    padding: 0, 
+    bg: map-get($palette,topPageBgColor), 
+    color: map-get($palette,TopPageArrowColor),
+    border: none,
+    border-radius: 1rem,
+    font-size: map-get($font-size,default),
+);
+
+$accessibiliteBottom:(
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgTopColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,accessibiliteBottom),
+);
+
+$realized-by:(
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgTopColor),
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem,
+    font-size: map-get($font-size,realized-by),
+);
+$copyright_heading: (
+    width: auto,
+    height: auto,
+    padding: 10px 20px, 
+    bg: map-get($palette,bgTopColor), 
+    color: map-get($palette,textColor),
+    border: solid map-get($palette,borderColor),
+    border-radius: 1rem 1rem 0 0,
+    font-size: map-get($font-size,copyright),
+); 
+$copyright_text: (
+    width: 90%, //si 100% on ne voit pas le boxshadow de droite
+    height: fit-content,
+    // height: $copyright_textHeight,
+    padding: 1rem, 
+    bg: map-get($palette,bgTopColor), 
+    color: map-get($palette,textColor),
+    border: solid 2px map-get($palette,borderColor),
+    border-radius: 1rem 1rem 0 0,
+    font-size: map-get($font-size,copyright),
+);
+$top-page-arrow: ( //position et géométrie flèche top-page
+    bottom: 12vh, //pour rester au dessus de 'realized by'
+    right: 40px,
+    initOpacity: 1,
+    hoverOpacity: 1,
+    transition: map-get($transitions,topPage),
+    ratioArrowHead: 0.35,
+    ratioArrowBodyHeight: 0.25,
+    ratioArrowBodyWidth: 0.3,
+    arrowColor: map-get($palette,topPageArrowColor),
+)

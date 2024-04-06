@@ -1,0 +1,22 @@
+
+# dependencies
+/front-end/node_modules/
+/server/node_modules/
+
+# img & fonts
+front-end/src/fonts
+front-end/src/img
+
+# production build
+/server/dist
+
+
+# env 
+/server/.env
+
+#ht access
+/front-end/src/.htaccess
+
+# personal note
+A-finir.rtf
+Evaluation-accessibilité_dyskredy-art.xlsx

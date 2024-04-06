@@ -1,0 +1,378 @@
+@use "sass:math";
+
+body {
+    max-width: $bodyMaxWidth;
+    min-height: $bodyMinHeight;
+    margin: auto;
+    border: solid map-get($palette,borderColor);
+    border-width: 0 2px 0 2px;
+}
+
+
+.modal-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 8;
+    width: auto;
+    height: auto;
+    background-color: map-get($palette,bgBottomColor);
+    top: math.div($bannerHeight, 2);
+    right: 0;
+    border-radius: 1rem 0rem 0rem 1rem;
+    border: solid map-get($palette,borderColor);
+    border-width: 2px 0px 2px 2px;
+    &_menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $menuMobileGap;
+        padding: map-get($paddings,menuMobile);
+        font-size: map-get($font-size,menuMobile);
+        list-style: none;
+        margin: map-get($margins,menuMobile);
+    }
+}
+
+.modal-access {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 8;
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 90vh;
+    background-color: map-get($palette,bgBottomColor);
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    padding: map-get($paddings,modalAccess);
+    border: solid 2px map-get($palette,borderColor);
+    border-radius: 2rem;
+    box-shadow: map-get($box-shadow-offset,modalAccess) map-get($box-shadow-offset,modalAccess) 10px map-get($palette,shadowColorDefault);
+    font-size: map-get($font-size,modalAccess);
+    &_heading {
+        animation: none;
+        width: auto;
+        margin: 0 auto;
+    }
+    &_liste {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        gap: $modalAccessListeGap;
+        min-width: 40vw;
+        width: min-content;
+        margin: map-get($margins,modalAccessListe);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: map-get($paddings,modalAccessListe);
+        //----------scrollbar-----------------------//
+        /*--Mozilla--*/
+        scrollbar-color: map-get($palette,scrollBar) map-get($palette,textColor);
+        scrollbar-width: auto;
+        & > li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: $modalAccessListeInternGap;
+            width: fit-content;
+            & label {
+                max-width: 100%;
+                background-color: map-get($palette,bgBottomColor);
+            }
+        }
+        & > li.range-wrapper {
+            @include tablette {
+                display: none;
+            }
+        }
+    }
+}
+
+.modal-shortcuts {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 9;
+    width: 75vw;
+    height: 90vh;
+    background-color: map-get($palette,bgBottomColor);
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    padding: map-get($paddings,modalAccess);
+    border: solid 2px map-get($palette,borderColor);
+    border-radius: 2rem;
+    box-shadow: map-get($box-shadow-offset,modalAccess) map-get($box-shadow-offset,modalAccess) 10px map-get($palette,shadowColorDefault);
+    font-size: map-get($font-size,modalAccess);
+    & p {
+        background-color: map-get($palette,bgBottomColor);
+    }
+    &_resume {
+        margin-top: 2rem;
+    }
+    &_how-to-navigate-question {
+        margin-top: 1.5rem;
+    }
+    &_how-to-navigate-text {
+        margin-top: 1rem;
+    }
+    &_how-to-navigate-note {
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+    &_content {
+        width: 100%;
+        overflow-y: auto;
+        //----------scrollbar-----------------------//
+        /*--Mozilla--*/
+        scrollbar-color: map-get($palette,scrollBar) map-get($palette,textColor);
+        scrollbar-width: auto;
+    }
+    &_heading {
+        animation: none;
+        width: auto;
+        margin: 0 auto 1rem auto;
+    }
+    & h2 {
+        width: 100%;
+    }
+    &_list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        gap: $modalAccessListeGap;
+        min-width: 40vw;
+        width: auto;
+        margin: 2rem 0;
+        overflow-x: hidden;
+        padding: map-get($paddings,modalAccessListe);
+        & > li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: $modalAccessListeInternGap;
+            width: 100%;
+            & label {
+                max-width: 100%;
+            }
+        }
+        & > li.range-wrapper {
+            @include tablette {
+                display: none;
+            }
+        }
+    }
+    & .section-pictures_panel-container {
+        display: none;
+        padding: 0 2rem;
+        &.display {
+            display: block;
+        }
+    }
+}
+
+.modal-lang {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 8;
+    width: auto;
+    height: auto;
+    max-height: 90vh;
+    background-color: map-get($palette,bgBottomColor);
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    padding: map-get($paddings,modalLang);
+    border: solid 2px map-get($palette,borderColor);
+    border-radius: 2rem;
+    box-shadow: map-get($box-shadow-offset,modalAccess) map-get($box-shadow-offset,modalAccess) 10px map-get($palette,shadowColorDefault);
+    font-size: map-get($font-size,modalAccess);
+    &_heading {
+        animation: none;
+        margin: 0 auto;
+        font-size: map-get($font-size,h1-modalLang);
+    }
+    &_content {
+        overflow-y: auto;
+        overflow-x: hidden;
+        //----------scrollbar-----------------------//
+        /*--Mozilla--*/
+        scrollbar-color: map-get($palette,scrollBar) map-get($palette,textColor);
+        scrollbar-width: auto;
+    }
+    &_question {
+        margin-top: 40px;
+        text-align: center;
+    }
+    &_liste {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        gap: $modalAccessListeGap;
+        margin: map-get($margins,modalLangListe);
+        & li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: $modalAccessListeInternGap;
+        }
+    }
+    &_confirm {
+        @include designComposants($accessibiliteBottom);
+        box-shadow: map-get($box-shadow-offset,modalLangConfirm) map-get($box-shadow-offset,modalLangConfirm) map-get($palette,shadowColorDefault);
+        transition: map-get($transitions,modalLangConfirm);
+        &:hover {
+            cursor: pointer;
+            transform: translate(map-get($box-shadow-offset,modalLangConfirm),map-get($box-shadow-offset,modalLangConfirm));
+            box-shadow: none;
+        }
+    }
+}
+
+.modal-close {
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: map-get($font-size,default);
+    padding: map-get($paddings,modalAccessClose);
+    background-color: map-get($palette,bgTopColor);
+    border: solid 1px map-get($palette,borderColor);
+    border-radius: 1rem;
+    box-shadow: map-get($box-shadow-offset,modalAccessClose) map-get($box-shadow-offset,modalAccessClose) map-get($palette,shadowColorDefault);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,modalAccessClose),map-get($box-shadow-offset,modalAccessClose));
+        box-shadow: none;
+    }
+}
+
+.slide {
+    position: fixed;
+    z-index: 8;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 15%;
+    @include mobile {
+        padding: 20px 5%;
+    }
+    background-color: rgba(0,0,0,0.95);
+    &_close {
+        position: absolute;
+        z-index: 9;
+        top: 5%;
+        right: 5%;
+        color: #fff;
+        font-size: 3rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    &_arrow-button {
+        color: #fff;
+        font-size: 3rem;
+        @include mobile {
+            font-size: 2rem;
+        }
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        &[disabled] {
+            display: none;
+        }
+    }
+    &_view {
+        display: flex;
+        height:80vh;
+        width: 80vw;
+        // background-color: #fff;
+        &_picture {
+            display: none;
+            height: 100%;
+            object-fit: contain;
+            max-width: 100%;
+            margin: auto;
+        }
+        &_picture.display {
+            display: block;
+        }
+    }
+    &_individual-buttons-container {
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        width: fit-content;
+        height: fit-content;
+        transform: translateX(-50%);
+    }
+    &_individual-button {
+        position: relative;
+        height: 1.5rem;
+        width: 1.5rem;
+        margin: 0 0.5rem;
+        background-color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        &[aria-disabled=true]::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            height: 80%;
+            width: 80%;
+            border-radius: 50%;
+            background-color: map-get($palette,slideButtonColor);
+        }
+    }
+}
+
+.body-bis { //existe uniquement pour que copyright puisse se cacher en position initiale et passer devant le reste en glissant (overflow hidden directement sur le body le rend statique) et pour avoir un after dessus quand on ouvre une modale
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex; //pour garder le footer collé en bas de page avec flex-grow (voir main.scss)
+    flex-direction: column;
+    &.has-modal::after {
+        content: "";
+        position: absolute;
+        z-index: 7;
+        height: 100%;
+        width: 100%;
+        background-color: map-get($palette,bgBodyHasmodal);
+    }
+}
+
+.mainAndFooterContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.copyright {
+    position: absolute;
+    z-index: 1;
+    bottom: 0vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $copyright_width;
+    height: auto;
+}
+

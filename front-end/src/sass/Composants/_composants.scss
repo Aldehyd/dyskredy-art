@@ -1,0 +1,723 @@
+.display {
+    &.focus-trapping {
+        display: block;
+    }
+    &.modal-access {
+        display: flex;
+        animation: map-get($animations,modal);
+    }
+    &.modal-shortcuts {
+        display: flex;
+        animation: map-get($animations,modal);
+    }
+    &.modal-mobile {
+        display: flex;
+        animation: map-get($animations,menuMobile);
+    }
+    &.modal-lang {
+        display: flex;
+        animation: map-get($animations,modal);
+    }
+    &.slide {
+        display: flex;
+    }
+    &.switch-contrast-mobile {
+        display: block;
+    }
+    &.header_dragon {
+        @media screen and (min-width: map-get($break-points,forDragon)) {
+            display: block;
+        }
+    }
+    &.header_tree {
+        @media screen and (min-width: map-get($break-points,forTreeCharacter)) {
+            display: block;
+        }
+    }
+    &.nav_link {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    &.submenu {
+        display: block;
+        transform: scaleY(1);
+    }
+    &.language_list {
+        display: block;
+    }
+    &.picture-description_text {
+        display: block;
+    }
+    &.portfolios-video-player_initial-play {
+        display: block;
+    }
+    &.video-transcription_text {
+        display: block;
+    }
+    &.top-page {
+        display: flex;
+        animation: map-get($animations,topPage);
+        @include mobile {
+            display: none;
+        }
+    }
+    &.copyright_text {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+body:not(.animate) .preview {
+    visibility: visible;
+    &_heading {
+        visibility: visible;
+        animation: map-get($animations,previewHeadingNoAnimation);
+    }
+    &_picture {
+        visibility: visible;
+        animation: map-get($animations,previewPictureNoAnimation);
+    }
+}
+body.animate .preview.display {
+    visibility: visible;
+    animation: map-get($animations,preview);
+    & .preview_heading {
+        visibility: visible;
+        animation: map-get($animations,previewHeading);
+    }
+    & .preview_picture {
+        visibility: visible;
+        animation: map-get($animations,previewPicture);
+    }
+}
+
+.acces-rapide {
+    position: absolute;
+    z-index: 8;
+    top: -100rem;
+    display: flex;
+    list-style: none;
+    padding: 2rem 0;
+    font-size: 1.5rem;
+    background-color: map-get($palette,accesRapide);
+    border-radius: 0 0 1rem 0;
+    &:focus-within {
+        top: 0;
+    }
+    & li {
+        width: fit-content;
+        margin: 0 2rem;
+    }
+    & a:hover {
+        text-decoration: underline;
+    }
+}
+
+.accessibility {
+    position: absolute;
+    z-index: 2;
+    top: map-get($accessibilite,positionTop);
+    left: map-get($accessibilite,positionLeft);
+    @include designComposants($accessibilite);
+    box-shadow: map-get($box-shadow-offset,accessibilite) map-get($box-shadow-offset,accessibilite) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,accessibilite);
+    &:hover {
+        cursor: pointer;
+        transform: translate(map-get($box-shadow-offset,accessibilite),map-get($box-shadow-offset,accessibilite));
+        box-shadow: none;
+    }
+    @include mobile {
+        display: none;
+    }
+}
+
+.focus-trapping {
+    display: none;
+}
+
+.modal-access label {
+    cursor: pointer;
+}
+
+.slider {
+    position: relative;
+    cursor: pointer;
+    &_rail {
+        position: relative;
+        background: map-get($palette,textColor);
+        width: $modalAccessRangeWidth;
+        @include mobile {
+            width: $modalAccessRangeWidthMobile;
+        }
+        height: $modalAccessRangeHeight;
+        border-radius: 2rem;
+        padding: map-get($paddings,modalAccessRange);
+        overflow: hidden;
+    }
+    &_progression {
+        position: absolute;
+        top: 50%;
+        left: 0.2rem;
+        height: 50%;
+        width: 0;
+        background-color: map-get($palette,bgBottomColor);
+        border-radius: 1rem;
+        transform: translateY(-50%);
+    }
+    &_thumb {
+        position: absolute;
+        left: $positionOffset;
+        top: $positionOffset;
+        display: inline-block;
+        width: $positionSize;
+        height: $positionSize;
+        background-color: map-get($palette,bgTopColor);
+        border-radius: 50%;
+        transition: map-get($transitions,pageAccessSwitch);
+    }
+}
+.range-wrapper {
+    padding: map-get($paddings,rangeWrapper);
+    background-color: map-get($palette,bgBottomColor);
+    &:focus-within {
+        padding: map-get($paddings,rangeWrapperFocus);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 10px;
+        background-color: map-get($palette,bgTopColor);
+        & label {
+            background-color: map-get($palette,bgTopColor);
+        }
+    }
+    &:hover {
+        padding: map-get($paddings,rangeWrapperFocus);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 10px;
+        background-color: map-get($palette,bgTopColor);
+        & label {
+            background-color: map-get($palette,bgTopColor);
+        }
+    }
+}
+
+.fieldset-police {
+    width: 100%;
+    padding: map-get($paddings,fieldsetPolice);
+    border-radius: 10px;
+    border-color: map-get($palette,textColor);
+    &_legend {
+        padding: map-get($paddings,fieldsetLegend);
+    }
+    &_choices {
+        list-style: none;
+    }
+    &_choice {
+        display: flex;
+        align-items: center;
+        margin: map-get($margins,fieldsetChoice);
+        padding: map-get($paddings,fieldsetChoice);
+        background-color: map-get($palette,bgBottomColor);
+        &:nth-child(1) {
+            margin-bottom: map-get($margins,fieldsetFirstChoice);
+        }
+        &_label {
+            line-height: 50%;
+        }
+        &_radio {
+            -webkit-appearance: none; //supprime le style par default
+            -moz-appearance: none;
+            appearance: none;
+            background-color: map-get($palette,textColor);
+            width: $modalAccessSwitchHeight;
+            height: $modalAccessSwitchHeight;
+            border-radius: 50%;
+            margin-left: map-get($margins,modalAccessRadios);
+            cursor: pointer;
+            &:checked {
+                background-color: map-get($palette,bgTopColor);
+                border: solid 0.3rem map-get($palette,map-get($palette,textColor));
+            }
+        }
+        &:focus-within {
+            padding: map-get($paddings,fieldsetChoiceFocus);
+            border: solid 2px map-get($palette,borderColor);
+            border-radius: 10px;
+            background-color: map-get($palette,bgTopColor);
+            & label {
+                background-color: map-get($palette,bgTopColor);
+            }
+        }
+        &:hover {
+            padding: map-get($paddings,fieldsetChoiceFocus);
+            border: solid 2px map-get($palette,borderColor);
+            border-radius: 10px;
+            background-color: map-get($palette,bgTopColor);
+            & label {
+                background-color: map-get($palette,bgTopColor);
+            }
+        }
+    } 
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $modalAccessListeInternGap;
+    flex-wrap: wrap;
+    padding: map-get($paddings,switch);
+    background-color: map-get($palette,bgBottomColor);
+    &.switch-contrast-mobile {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        display: none;
+        width: 100%;
+        font-size: 1.4rem;
+        &_container {
+            border-radius: 0;
+        }
+        &:hover {
+            border-radius: 0;
+        }
+        @include mobile {
+            display: flex;
+        }
+    }
+    &_label {
+        flex-shrink: 0;
+    }
+    & button {
+        cursor: pointer;
+    }
+    & button[aria-checked="true"] .switch_position {
+        transform: translateX($translateSwitch);
+    }
+    & button[aria-checked="true"] .switch_on {
+        display: block;
+    }
+    & button[aria-checked="true"] .switch_off {
+        display: none;
+    }
+    & button[aria-checked="false"] .switch_position {
+        transform: translateX(0);
+    }
+    &_box {
+        display: inline-block;
+        width: $modalAccessSwitchWidth;
+        background-color: transparent;
+        border: none;
+    }
+    &_container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: $modalAccessSwitchHeight;
+        background-color: map-get($palette,textColor);
+        border-radius: 2rem;
+        font-size: map-get($font-size,default);
+    }
+    &_position {
+        position: absolute;
+        left: $positionOffset;
+        top: $positionOffset;
+        display: inline-block;
+        width: $positionSize;
+        height: $positionSize;
+        background-color: map-get($palette,bgTopColor);
+        border-radius: 50%;
+        transition: map-get($transitions,pageAccessSwitch);
+    }
+    &_on {
+        display: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: $ONandOFFOffset;
+        color: map-get($palette,bgTopColor);
+    }
+    &_off {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: $ONandOFFOffset;
+        color: map-get($palette,bgTopColor);
+    }
+    &:focus-within {
+        padding: map-get($paddings,switchFocus);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 10px;
+        background-color: map-get($palette,bgTopColor);
+        & .switch_label {
+            background-color: map-get($palette,bgTopColor);
+        }
+    }
+    &:hover {
+        padding: map-get($paddings,switchFocus);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 10px;
+        background-color: map-get($palette,bgTopColor);
+        & .switch_label {
+            background-color: map-get($palette,bgTopColor);
+        }
+    }
+}
+
+
+.page-access, .shortcuts-button {
+    @include designComposants($pageAccess);
+    box-shadow: map-get($box-shadow-offset,pageAccess) map-get($box-shadow-offset,pageAccess) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,pageAccess);
+    cursor: pointer;
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,pageAccess),map-get($box-shadow-offset,pageAccess));
+        box-shadow: none;
+    }
+    &:focus {
+        transform: translate(map-get($box-shadow-offset,pageAccess),map-get($box-shadow-offset,pageAccess));
+        box-shadow: none;
+    }
+    &:active {
+        transform: translate(map-get($box-shadow-offset,pageAccess),map-get($box-shadow-offset,pageAccess));
+        box-shadow: none;
+    }
+}
+.shortcuts-button {
+    font-size: 1.6rem; //sinon ne fonctionne pas...
+}
+
+.nav_link {
+   @include designComposants($navLinks);
+   position: relative; //pour placer le ::after
+   z-index: 1;
+   font-size: map-get($font-size,nav_link);
+   box-shadow: map-get($box-shadow-offset,navLink) map-get($box-shadow-offset,navLink) map-get($palette,shadowColorDefault);
+   margin-top: map-get($margins,topNavLink);
+   white-space: nowrap;
+   overflow: hidden;
+   &.current-page { 
+    & .nav_link_heading {
+        color: map-get($palette,currentPageFont);
+        & .navlink-arrow {
+            color: map-get($palette,currentPageFont);
+        }
+    }
+    background-color: map-get($palette,currentPageLink);
+   }
+   @include extendedLink;
+   transition: map-get($transitions,navLink);
+   &:not(:first-child) {
+    padding: map-get($paddings,navLink);
+   }
+   &:first-child:focus {
+    border-radius: map-get($navLinks,border-radius) map-get($navLinks,border-radius) 0 0;
+   }
+   &.mobileportfolios { //sur menu mobile, mise en forme identique aux autres navlinks pour 'portfolio'
+        padding-right: 20px; 
+        padding-left: 20px;
+        &:hover {
+            border-radius: map-get($navLinks,border-radius);
+        }
+        &:focus {
+            border-radius: map-get($navLinks,border-radius);
+        }
+    }
+   &:hover {
+    transform: translateX(map-get($box-shadow-offset,navLink)) translateY(map-get($box-shadow-offset,navLink));
+    box-shadow: none;
+   }
+   &:focus {
+    transform: translateX(map-get($box-shadow-offset,navLink)) translateY(map-get($box-shadow-offset,navLink));
+    box-shadow: none;
+   }
+   &--portfolio {
+    padding-left: map-get($paddings,navLinkPortFolio);
+    padding-right: map-get($paddings,navLinkPortFolio);
+    transition: map-get($transitions,navLinkPortFolios);
+    &.submenu-displayed {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    &:hover {
+        cursor: pointer;
+        padding-left: 0;
+        padding-right: 0;
+    }
+   }
+   & > .submenu {
+    transform-origin: 50% 0;
+    animation: map-get($animations,subMenu);
+    }
+   &_heading[aria-current="page"]::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: map-get($palette,currentPageShape);
+    border-radius: 1px;
+   }
+}
+.navlink-arrow.up {
+    transform: rotate(180deg);
+}
+
+.burger-line {
+    height: 2px;
+    width: 80%;
+    background-color: map-get($palette,borderColor);
+}
+
+.social-networks {
+    position: absolute;
+    top: $decalageTopSocialNetworks;
+    left: $decalageLeftSocialNetworks;
+    width: $socialNetworksWidth;
+    height: $socialNetworksHeight;
+    @include flex(space-around);
+    gap: $socialNetworksGap;
+    &_icone {
+        position: relative;
+        display: flex; //pour centrer l'icone
+        @include designComposants($social-media-icone);
+        overflow: hidden;
+        box-shadow: map-get($box-shadow-offset,socialNetwork) map-get($box-shadow-offset,socialNetwork) map-get($palette,shadowColorDefault);
+        transition: map-get($transitions,socialNetwork);
+        &:not([aria-disabled=true]):hover {
+            transform: translateX(map-get($box-shadow-offset,socialNetwork)) translateY(map-get($box-shadow-offset,socialNetwork));
+            box-shadow: none;
+        }
+    }
+    &_svg {
+        height: $socialNetworksSVGSize;
+        width: $socialNetworksSVGSize;
+        stroke: map-get($palette,socialNetworkColor);
+        stroke-width: 5px;
+        fill: map-get($palette,socialNetworkColor);
+    }
+    @include mobile {
+        display: flex;
+        flex-direction: row;
+        width: $socialNetworksHeight;
+        height: $socialNetworksWidth;
+    }
+}
+
+.language {
+    position: absolute;
+    top: $decalageTopSocialNetworks;
+    right: $decalageLeftSocialNetworks;
+    @include designComposants($language);
+    font-size: map-get($font-size,language);
+    box-shadow: map-get($box-shadow-offset,language) map-get($box-shadow-offset,language) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,language);
+    cursor: pointer;
+    &:hover {
+        transform: translateX(map-get($box-shadow-offset,language)) translateY(map-get($box-shadow-offset,language));
+        box-shadow: none;
+    }
+    &_list {
+        display: none;
+        list-style: none;
+        border-top: solid 2px;
+        padding-top: map-get($paddings,language);
+    }
+    &_listitem {
+        width: 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: map-get($paddings,languageListItem);
+        border-radius: 10px;
+        &-selection {
+            display: none;
+        }
+        &[aria-selected="true"] .language_listitem-selection {
+            display: inline;
+        }
+        &.active-item {
+            background-color: map-get($palette,languageActiveItemBg);
+            color: map-get($palette,languageActiveItem);
+            & .language_listitem-selection {
+                color: map-get($palette,languageActiveItem);
+            }
+        }
+    }
+    &_listitem:hover {
+        background-color: map-get($palette,languageActiveItemBg);
+        color: map-get($palette,languageActiveItem);
+        & .language_listitem-selection {
+            color: map-get($palette,languageActiveItem);
+        }
+    }
+    &_listitem:active {
+        background-color: map-get($palette,languageActiveItemBg);
+        color: map-get($palette,languageActiveItem);
+        & .language_listitem-selection {
+            color: map-get($palette,languageActiveItem);
+        }
+    }
+}
+
+.breadcrumb {
+    margin-bottom: 3rem;
+    @include designComposants($breadCrumb);
+    box-shadow: map-get($box-shadow-offset,language) map-get($box-shadow-offset,language) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,language);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,language),map-get($box-shadow-offset,language));
+        box-shadow: none;
+    }
+}
+
+.preview {
+    visibility: hidden;
+    @include designComposants($preview);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: map-get($box-shadow-offset,preview) map-get($box-shadow-offset,preview) map-get($palette,shadowColorDefault);
+    border: solid 2px map-get($palette,borderColor);
+    transition: map-get($transitions,preview);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,preview),map-get($box-shadow-offset,preview));
+        box-shadow: none; 
+    }
+    &_picture {
+        visibility: hidden;
+        object-fit: cover;
+        width: 100%;
+        min-height: 100%;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(-100%);
+        &--horiz {
+            height: 100%;
+            min-width: 100%;
+        }
+    }
+    &_heading {
+        visibility: hidden;
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        transform: translateX(-50%);
+        z-index: 2;
+        opacity: 0;
+        background-color: map-get($palette,bgTopColor);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 2rem;
+        padding: 1rem;
+    }
+    &_link {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        
+    }
+}
+
+.footer_realized-by {
+    @include designComposants($realized-by);
+    position: relative;
+    z-index: 1;
+    font-size: map-get($font-size,realized-by);
+    overflow: hidden;
+    box-shadow: map-get($box-shadow-offset,realizedBy) map-get($box-shadow-offset,realizedBy) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,realizedBy);
+    & a:not([aria-disabled=true]):hover {
+        transform: translate(map-get($box-shadow-offset,realizedBy),map-get($box-shadow-offset,realizedBy));
+        box-shadow: none;
+    }
+}
+
+.footer_accessibilite {
+    @include designComposants($accessibiliteBottom);
+    position: relative;
+    z-index: 1;
+    font-size: map-get($font-size,accessibiliteBottom);
+    box-shadow: map-get($box-shadow-offset,accessibiliteBottom) map-get($box-shadow-offset,accessibiliteBottom) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,accessibiliteBottom);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,accessibiliteBottom),map-get($box-shadow-offset,accessibiliteBottom));
+        box-shadow: none;
+    }
+}
+
+.copyright {
+    &_heading {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        @include designComposants($copyright_heading);
+        border-width: 2px 2px 0px 2px;
+        box-shadow: map-get($box-shadow-offset,copyright) map-get($box-shadow-offset,copyright) map-get($palette,shadowColorDefault);
+        text-align: center;
+        white-space: nowrap;
+        // &:hover + .copyright_text {
+        //     transform: translateX(-50%) translateY(0);
+        // }
+    }
+    &_text {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        @include designComposants($copyright_text);
+        border-bottom-width: 0px;
+        box-shadow: map-get($box-shadow-offset,copyright) map-get($box-shadow-offset,copyright) map-get($palette,shadowColorDefault);
+        text-align: center;
+        transition: map-get($transitions,copyright);
+        // &:hover {
+        //     transform: translateX(-50%) translateY(0);
+        // }
+    }
+}
+
+
+.top-page {
+    position: fixed;
+    z-index: 4;
+    display: none;
+    transform: scale(1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: map-get($top-page-arrow,bottom);
+    right: map-get($top-page-arrow,right);
+    box-shadow: map-get($box-shadow-offset,topPage) map-get($box-shadow-offset,topPage) map-get($palette,shadowColorDefault);
+    opacity: map-get($top-page-arrow,initOpacity);
+    transition: map-get($top-page-arrow,transition);
+    @include designComposants($top-page);
+    &_arrow-head {
+        height: 0;
+        width: 0;
+        border-bottom: map-get($top-page,width)*map-get($top-page-arrow,ratioArrowHead) solid map-get($top-page-arrow,arrowColor);
+        border-right: map-get($top-page,width)*map-get($top-page-arrow,ratioArrowHead) solid transparent;
+        border-left: map-get($top-page,width)*map-get($top-page-arrow,ratioArrowHead) solid transparent;
+        opacity: map-get($top-page-arrow,initOpacity);
+        transition: map-get($top-page-arrow,transition);
+    }
+    &_arrow-body {
+        height: map-get($top-page,width)*map-get($top-page-arrow,ratioArrowBodyHeight);
+        width: map-get($top-page,width)*map-get($top-page-arrow,ratioArrowBodyWidth);
+        background-color: map-get($top-page-arrow,arrowColor);
+        opacity: map-get($top-page-arrow,initOpacity);
+        transition: map-get($top-page-arrow,transition);
+    }
+    &:hover {
+        opacity: map-get($top-page-arrow,hoverOpacity);
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    &:hover div {
+        opacity: map-get($top-page-arrow,hoverOpacity);
+    }
+    &.scroll-end {
+        transform: translateY(-120px);
+    }
+}
+
+
+

@@ -1,0 +1,41 @@
+@mixin flex($justify-content) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justify-content;
+    flex-wrap: nowrap;
+}
+
+@mixin designComposants($composant) {
+        width: map-get($composant,width);
+        height: map-get($composant,height);
+        padding: map-get($composant,padding);
+        background-color: map-get($composant,bg);
+        color: map-get($composant,color);
+        border: map-get($composant,border);
+        border-radius: map-get($composant,border-radius);
+        font-size: map-get($composant,font-size);
+    }
+
+    @mixin extendedLink { //pour que les cases entières des menus soient des liens
+        a {
+            display: inline-block;
+            width: auto;
+            height: auto;
+           }
+    }
+
+@mixin ordi {
+    @media screen and (max-width: map-get($break-points,ordi)) {
+        @content;
+    }
+}
+@mixin tablette {
+    @media screen and (max-width: map-get($break-points,tablette)) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media screen and (max-width: map-get($break-points,mobile)) {
+        @content;
+    }
+}

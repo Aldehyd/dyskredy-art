@@ -1,0 +1,36 @@
+main.error-page {
+    background: #000;
+}
+
+.error-404 {
+    &-text {
+        color: #fff;
+    }
+    &-image {
+        margin-top: 2rem;
+    }
+    &.top-page {
+        background-color: #fff;
+        & .top-page_arrow-head {
+            // border-color: #000;
+            border-bottom-color: #000;
+        }
+        & .top-page_arrow-body {
+            background-color: #000;
+        }
+    }
+    &-footer {
+        background-color: #000;
+    }
+}
+
+.back-to-safe-place-link {
+    margin: 3rem auto;
+    @include designComposants($backToSafePlace);
+    box-shadow: map-get($box-shadow-offset,language) map-get($box-shadow-offset,language) map-get($palette,shadowColorDefault);
+    transition: map-get($transitions,language);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,language),map-get($box-shadow-offset,language));
+        box-shadow: none;
+    }
+}

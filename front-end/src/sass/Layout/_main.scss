@@ -1,0 +1,301 @@
+main {
+    display: flex; //pour avoir le h1 centré
+    flex-direction: column;
+    padding: map-get($paddings,main);
+    @include mobile {
+        padding: map-get($paddings,mainMobile);
+    }
+    position: relative;
+    flex-grow: 1; //pour garder le footer collé en bas de page 
+    background: $mainBg;
+}
+
+.section-text {
+    @include designComposants($sectionText);
+    margin: auto;
+}
+
+.section-pictures {
+    &:not(.section-photos) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+    }
+    &.section-photos {
+        padding: 0 0.5rem;
+    }
+    &_panel-container {
+        position: relative;
+        top: 5px;
+        overflow-y: hidden;
+    }
+
+}
+
+.portfolios-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin: 1rem;
+    &:hover .picture-description_title {
+        transform: translateY(0);
+    }
+    &:focus-within .picture-description_title {
+        transform: translateY(0);
+    }
+}
+.portfolios-pictures {
+    width: 250px;
+    height: 250px;
+    border: solid 2px map-get($palette,borderColor);
+    &--photos {
+        object-fit: cover;
+    }
+    border-radius: 10px;
+    box-shadow: map-get($box-shadow-offset,portfoliosImages) map-get($box-shadow-offset,portfoliosImages) map-get($palette,shadowColorDefault);
+    cursor: pointer;
+    transition: map-get($transitions,portfoliosImages);
+    &:hover {
+        transform: translate(map-get($box-shadow-offset,portfoliosImages),map-get($box-shadow-offset,portfoliosImages));
+        box-shadow: none;
+    }
+    &:focus {
+        transform: translate(map-get($box-shadow-offset,portfoliosImages),map-get($box-shadow-offset,portfoliosImages));
+        box-shadow: none;
+    }
+    &:active {
+        transform: translate(map-get($box-shadow-offset,portfoliosImages),map-get($box-shadow-offset,portfoliosImages));
+        box-shadow: none;
+    }
+}
+.picture-button {
+    z-index: 1;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+.picture-description {
+    &_title {
+        z-index: 0;
+        @include designComposants($detailledDescriptionButton);
+        border-width: 0 0.2rem 0.2rem 0.2rem;
+        cursor: pointer;
+        transform: translateY(-120%);
+        transition: transform 200ms ease-in-out;
+        &[aria-expanded=false] .up-arrow {
+            display: none;
+        }
+        &[aria-expanded=true] .down-arrow {
+            display: none;
+        }
+    }
+    &_text {
+        display: none;
+        transform: scaleY(1);
+        transform-origin: 50% 0;
+        
+    }
+}
+body.animate .picture-description_text {
+    animation: map-get($animations,detailledDescription);
+}
+
+.section-videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+.portfolios-videos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.video-transcription {
+    &_title {
+        @include designComposants($videoTranscriptionButton);
+        box-shadow: map-get($box-shadow-offset,videoTranscription) map-get($box-shadow-offset,videoTranscription) map-get($palette,shadowColorDefault);
+        cursor: pointer;
+        transition: map-get($transitions,videoTranscription);
+        &[aria-expanded=false] .up-arrow {
+            display: none;
+        }
+        &[aria-expanded=true] .down-arrow {
+            display: none;
+        }
+        &:hover {
+            transform: translate(map-get($box-shadow-offset,videoTranscription),map-get($box-shadow-offset,videoTranscription));
+            box-shadow: none;
+        }
+    }
+    &_text {
+        display: none;
+        transform: scaleY(1);
+        transform-origin: 50% 0;
+    }
+}
+body.animate .video-transcription_text {
+    animation: map-get($animations,detailledDescription);
+}
+.container-for-visible-focus {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    &.display {
+        padding: calc(0.5rem - 2px);
+        border: solid 2px map-get($palette,focusVideo);
+    }
+}
+.portfolios-video-player {
+    position: relative;
+    border: solid 2px map-get($palette,borderColor);
+    border-radius: 1rem;
+    overflow: hidden;
+    & video {
+        padding: 0;
+        width: 40rem;
+        &:not(.full-screen) ~ .portfolios-video-player_control-bar {
+            @include mobile {
+                transform: translateY(0);
+            }
+        }
+        &:not(.full-screen) {
+            @include mobile {
+                width: 20rem;
+                height: 19rem;
+                transform: translateY(-21%);
+            }
+        }
+        border-radius: 1rem;
+        &.full-screen {
+            width: 100%;
+        }
+    }
+    &_background {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        min-width: 100%;
+        object-fit: cover;
+        &.display {
+            display: block;
+        }
+    }
+    &_initial-play {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        @include mobile {
+            transform: translate(-50%,-100%);
+        }
+        width: 5rem;
+        height: 5rem;
+        font-size: 4rem;
+        color: map-get($palette,textColor);
+        background-color: map-get($palette,bgTopColor);
+        border: solid 2px map-get($palette,borderColor);
+        border-radius: 50%;
+        box-shadow: 0 0 5px map-get($palette,borderColor);
+        cursor: pointer;
+        transition: transform 200ms ease-out;
+        & span {
+            display: inline-block;
+            transform: translate(3%,-10%);
+        }
+        &:hover {
+            box-shadow: none;
+        }
+    }
+    &_control-bar.display {
+        transform: translateY(0);
+    }
+    &_control-bar {
+        transform: translateY(100%);
+        position: absolute;
+        bottom: 0;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        background-color: map-get($palette,menuColor);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        transition: 200ms ease-out;
+        & button {
+            font-size: 2.4rem;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        &_time-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            & .video-play span {
+                display: inline-block;
+                transform: translateY(-10%);
+            }
+            & .video-play[aria-label='Arrêter la vidéo'] .play-symbol {
+                display: none;
+            }
+            & .video-play[aria-label='Stop the video'] .play-symbol {
+                display: none;
+            }
+            & .video-play[aria-label='Lancer la vidéo'] .pause-symbol {
+                display: none;
+            }
+            & .video-play[aria-label='Play the video'] .pause-symbol {
+                display: none;
+            }
+            & .video-time-line {
+                flex-grow: 1;
+                & .slider_rail {
+                    width: auto;
+                    min-width: 9rem;
+                }
+            }
+            & .video-time-indicators {
+                font-size: 1.4rem;
+            }
+        }
+        &_volume-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            & .slider_rail {
+                width: 8rem;
+            }
+            & .volume-symbol {
+                display: none;
+                transform: rotate(180deg) translate(-20%,-5%);
+                &.display {
+                    display: block;
+                }
+            }
+        }
+        &_full-screen {
+            color: map-get($palette,textColor);
+            & svg {
+                display: none;
+                height: 2rem;
+                width: 2rem;
+                fill: map-get($palette,textColor);
+                &.display {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+

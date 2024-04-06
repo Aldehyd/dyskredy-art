@@ -1,0 +1,77 @@
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: map-get($palette,textColor);
+}
+
+html {
+    font-size: 62.5%;
+    background-color: map-get($palette,htmlBgColor);
+    scroll-behavior: smooth;
+    font-family: 'Roboto';
+}
+
+a {
+    text-decoration: none;
+}
+.section-text a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a[aria-disabled=true] {
+    cursor: not-allowed;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 110%;
+        height: 110%;
+        background-color: rgba(0,0,0,0.6);
+    }
+}
+
+h1 {
+    display: inline-block;
+    width: $h1Width;
+    margin: auto;
+    padding: map-get($paddings,h1);
+    background-color: map-get($palette,menuColor);
+    text-align: center;
+    margin-bottom: map-get($margins,bottomH1);
+    font-size: map-get($font-size,h1);
+    border: $h1Border;
+    border-radius: $h1BorderRadius;
+}
+
+h2 {
+    font-size: map-get($font-size,h2);
+}
+
+h3 {
+    font-size: map-get($font-size,h3);
+}
+
+h4 {
+    font-size: map-get($font-size,h4);
+}
+
+p {
+    font-size: map-get($font-size,p);
+}
+
+li {
+    width: 100%;
+}
+
+button, select {
+    font-family: inherit; //sinon les boutons sont stylisés par defaut avec une autre font family et ne change jamais en openDyslexic
+}
+
+@font-face {
+    font-family: 'openDyslexic';
+    src: url('./fonts/OpenDyslexic-Regular.otf') format('opentype');
+}
+
