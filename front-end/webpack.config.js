@@ -68,6 +68,17 @@ config = {
             {
                 test: /\.(png|jpg|svg|mp4)$/i,
                 type: 'asset/resource',
+                use: [{
+                    loader: 'image-webpack-loader',
+                    options: {
+                        pngquant: {
+                            quality: [.65, .9],
+                        },
+                        mozjpeg: {
+                            quality: 90
+                        }
+                    }
+                }],
                 generator: {
                     filename: devMode ? 'img/[name][ext]' : 'img/[hash][ext][query]',
                 }
