@@ -66,9 +66,9 @@ li {
     width: 100%;
 }
 
-button, select {
-    font-family: inherit; //sinon les boutons sont stylisés par defaut avec une autre font family et ne change jamais en openDyslexic
-}
+// button, select {
+//     font-family: inherit; //sinon les boutons sont stylisés par defaut avec une autre font family et ne change jamais en openDyslexic
+// }
 
 @font-face {
     font-family: 'openDyslexic';

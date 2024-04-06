@@ -270,6 +270,9 @@ export default class Accessibility implements AccessibilityInterface {
         localStorage.setItem("police",this.police);
         document.documentElement.style.fontFamily = this.police;
 
+        const particularElements: NodeListOf<HTMLElement> = document.querySelectorAll('button, select, input, textarea');
+        particularElements.forEach(element => element.style.fontFamily = this.police);
+
         if(this.police == 'roboto') {
             this.policeOptions[0].checked = true;
         } else {
